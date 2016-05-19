@@ -40,6 +40,15 @@ exports.default = {
 			'calling updateOffset on moments created before setting a default timezone should not affect their timezone'
 		);
 		moment.tz.setDefault();
+
+		moment.tz.setDefault('America/New_York');
+		var m3 = moment("1461906597", "X");
+		t.equal(
+			m3.isValid(),
+			true,
+			'creating moments from a unix timestamp after setting a default timezone should succeed'
+		);
+		moment.tz.setDefault();
 		t.done();
 	},
 	utc : function (t) {
